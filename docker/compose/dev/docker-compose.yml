@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  tg-bot1:
+    image: tgbot1
+    container_name: tgbot1
+    #    restart: always
+    build:
+      context: .
+      dockerfile: docker/images/dev/Dockerfile
+    command:
+      - /bin/sh
+      - -c
+      - |
+        npm run start
+    environment:
+      MONGO_USERNAME:
+      MONGO_PASSWORD:
+      MONGO_PORT:
+      MONGO_DB:
+      MONGO_HOST: "mongodbiqcookcore"
+      WEB_APP_URL:
+      BOT_TOKEN:
+      TZ: "Europe/Moscow"
+#    ports:
+#      - ${SERVER_PORT}:${SERVER_PORT}
+    networks:
+      private: {}
+      public: {}
+networks:
+  private:
+    internal: true
+    name: private
+  public:
+    internal: false
+    name: public
