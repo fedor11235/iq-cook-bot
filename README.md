@@ -1,9 +1,9 @@
 #### Запуск Mongo локально
 Клонировать репозиторий
 ```
-git clone git@gitlab.com:idexia/iq-cook-tg-bot1.git
+git clone git@github.com:intro333/iq-cook-bot.git
 ```
-Создать .env
+Создать .env и заполнить данными (напр. BOT_TOKEN)
 ```
 cp .env.example .env
 ```
@@ -17,7 +17,7 @@ docker exec -ti mongodbiqcookcore sh
 ```
 Зайти в монгу под логином/паролем
 ```
-mongosh -u iqcookuser -p ok2n1hJOi1LncxJ --authenticationDatabase admin
+mongosh -u iqcookuser -p 1234 --authenticationDatabase admin
 ```
 Зайти (оно же создать) в БД
 ```
@@ -27,7 +27,7 @@ use iqcookcore
 ```
 db.createUser({
   user: 'iqcookuser',
-  pwd: 'ok2n1hJOi1LncxJ',
+  pwd: '1234',
   roles: [
     {
       role: 'dbOwner',
