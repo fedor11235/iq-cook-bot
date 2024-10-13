@@ -1,0 +1,53 @@
+//меню
+model Dish {
+  id                Int          @id @default(autoincrement())
+  dish_name         String?
+  quantity          Int          @default(0)
+  kilocalories      Float?
+  energy_costs      Float?
+  labor_costs       Float?
+  cost_price        String?
+
+  dish_type         FOOT_TYPE?
+  //привязка один к многим с цех юзер
+  client            Dish_category?    @relation(fields: [category_id], references: [id])
+  category_id       Int
+
+  extra_charge_percent String?
+
+  clients Client[]
+
+  restauran            Restauran    @relation(fields: [restauran_id], references: [id])
+  restauran_id Int
+}
+
+model Dish_category {
+  id                Int          @id @default(autoincrement())
+  dish_name         String
+  dishs             Dish[]
+}
+
+model Product {
+  id                Int          @id @default(autoincrement())
+  name              String?
+  description       String?
+  price             Float?
+  weight            Float?
+  weightName        WEIGHT_NAME
+  img               String?
+  product_type      FOOT_TYPE?
+  product_varienty  PRODUCT_VARIETY?
+
+  product_category            Product_category?    @relation(fields: [product_category_id], references: [id])
+  product_category_id Int
+
+  restauran            Restauran    @relation(fields: [restauran_id], references: [id])
+  restauran_id Int
+}
+
+model Product_category {
+  id                Int          @id @default(autoincrement())
+  name              String?
+
+  products Product[]
+}

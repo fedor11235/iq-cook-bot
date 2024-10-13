@@ -1,0 +1,47 @@
+//модели для клиентов
+model Client {
+  id                Int          @id @default(autoincrement())
+  status            Boolean      @default(false)
+  date_registration DateTime     @default(now())
+  date_last_order   DateTime?
+
+  //привязка один к одному с моделью юзер
+  user                User         @relation(fields: [userId], references: [id])
+  userId              Int          @unique
+  
+  orders              Order[]
+  Table_reservations  Table_reservations[]
+
+  dish                Dish?    @relation(fields: [dish_favorite_id], references: [id])
+  dish_favorite_id    Int
+}
+
+model Order {
+  id                Int          @id @default(autoincrement())
+  name              String?
+  phone             String?
+  status            Order_status @default(NOT_CONFIRMED)
+  order_type        Order_type?
+  payment           Payment_type?
+  sum               String?
+  date_order        DateTime     @default(now())
+  use_bonuses       Boolean      @default(false)
+  address           String?
+
+  //привязка один к многим с цех юзер
+  client            Client?    @relation(fields: [client_id], references: [id])
+  client_id         Int
+}
+
+model Table_reservations {
+  id                Int          @id @default(autoincrement())
+  date_reservations DateTime     @default(now())
+  comment           String?
+
+  //привязка один к многим с цех юзер
+  client            Client?    @relation(fields: [client_id], references: [id])
+  client_id         Int
+}
+
+//TODO тут доджна быть модель для предзаказа
+

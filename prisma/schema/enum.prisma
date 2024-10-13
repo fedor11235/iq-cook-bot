@@ -1,0 +1,68 @@
+//перечисления
+enum Profile_type {
+  CLIENT
+  STAFF
+}
+
+enum Order_status {
+  NOT_CONFIRMED
+  AWAITING_COOKING
+  CANCELLED
+  COMPLETED
+  PAID
+}
+
+enum Order_type {
+  SELF_PICKUP
+  COURIER
+  PRE_ORDER
+}
+
+enum Payment_type {
+  CASH
+  WITHOUT_CASH
+}
+
+enum WORKSHOP_TYPE {
+  COLD
+  HOT
+  BAR
+}
+
+enum CURRENCY {
+  RUB
+  EUR
+  USD
+}
+
+enum WEIGHT_NAME {
+  LITER
+  KILOGRAM
+  PIECE
+}
+
+enum TECH_PROCES_TYPE {
+  FRYING
+  BREW
+  BAKING
+  STEAMING
+  FREEZING
+  COOLING
+  SLICING
+  SHREDDER
+}
+
+enum MEASURE_MENT_UNIT {
+  KILOWATT_PER_HOUR
+}
+
+enum FOOT_TYPE {
+  SEMI_FINISHED
+  DISH
+}
+
+enum PRODUCT_VARIETY {
+  SEMI_FINISHED
+  INGREDIENT
+}
+

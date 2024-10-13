@@ -1,0 +1,33 @@
+//общие модели
+model User {
+  id             Int          @id @default(autoincrement())
+  bot_user_id    String       @unique
+  name           String?
+  is_activate    Boolean      @default(false)
+  phone          Profile_type @default(CLIENT)
+  staff          Staff?
+  client         Client?
+  step           Int          @default(0)
+}
+
+model Settings {
+  id             Int          @id @default(autoincrement())
+  currency       CURRENCY     @default(RUB)
+  active_menu     String?
+
+  selected_restauran          Restauran?    @relation(fields: [selected_restauran_id], references: [id])
+  selected_restauran_id       Int
+}
+
+model Restauran {
+  id             Int          @id @default(autoincrement())
+  name           String?
+  address        String?
+
+  settings       Settings[]
+  workshops      Workshop[]
+
+  products       Product[]
+  dishs          Dish[]
+}
+

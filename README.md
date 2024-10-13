@@ -42,3 +42,19 @@ pm2 start dist/index.js
 ```
 Ресурс
 https://www.npmjs.com/package/pm2
+
+```
+Длф докера
+```
+нода 18
+# Импортируйте ключ подписи репозитория:
+## Установка постгресс
+sudo apt update
+sudo apt install postgresql postgresql-contrib -y
+sudo -i -u postgres 
+\password
+11235
+11235
+## Установка prisma
+
+psql -U postgres

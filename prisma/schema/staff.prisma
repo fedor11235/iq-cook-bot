@@ -1,0 +1,29 @@
+//модели для работников
+model Staff {
+  id            Int          @id @default(autoincrement())
+  job_title     String?
+  salary        String?
+  cost_day      String?
+  cf_status     Float? 
+
+  location      String? 
+
+  efficiency_factor      Float? 
+  //привязка один к одному с моделью юзер
+  user          User         @relation(fields: [userId], references: [id])
+  userId        Int          @unique
+
+  //привязка один к многим с цех юзер
+  author        Workshop?    @relation(fields: [workshop_id], references: [id])
+  workshop_id   Int
+}
+
+model Workshop {
+  id              Int        @id @default(autoincrement())
+  workshop_name   String
+  workshop_type   WORKSHOP_TYPE
+  staffs          Staff[]
+
+  restauran       Restauran?    @relation(fields: [restauran_id], references: [id])
+  restauran_id    Int
+}
